@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="计算巢是阿里云开放给企业应用服务商的服务管理平台。服务商能够在计算巢上发布私有化部署服务，为其客户提供云上软件一键部署的能力；同时也支持全托管模式的服务，赋能服务商托管其客户资源。">
+  <title>AdsDesk 服务私有化一键部署文档 - Aliyun 计算巢 x Demo</title>
+
+  <link rel="shortcut icon" href="img/favicon.ico">
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+  <link rel="stylesheet" href="css/theme.css">
+  
+
+  
+
+  
+  
+
+  
+    <script src="search/main.js"></script>
+  
+
+  
+
+  <script src="js/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="nav-inner">
+        <div class="logo">
+          <img src="./img/logo-2x.png">
+        </div>
+        <div class="nav-list">
+          <ul>
+          
+              <li><a href="#adsdesk">AdsDesk 服务私有化一键部署文档</a></li>
+              
+                  <li><a href="#1">1、阿里云一键部署说明</a></li>
+                  
+              
+                  <li><a href="#2">2、需要权限列举</a></li>
+                  
+              
+                  <li><a href="#3">3、阿里云一键部署具体步骤</a></li>
+                  
+              
+                  <li><a href="#4">4、交付物</a></li>
+                  
+              
+                  <li><a href="#5">5、客户使用</a></li>
+                  
+              
+          
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="content theme-github">
+      
+      <div class="content-inner">        
+        
+        <h1 id="adsdesk">AdsDesk 服务私有化一键部署文档</h1>
+<h2 id="1">1、阿里云一键部署说明</h2>
+<p>在阿里云只需在创建页选配好云服务器参数，阿里计算巢将自动为您创建带有AdsDesk的云服务器。</p>
+<p>创建完成后，您只需将自己的域名与服务集群内的LB地址绑定即可使用AdsDesk。</p>
+<h2 id="2">2、需要权限列举</h2>
+<table>
+<thead>
+<tr>
+<th>权限策略名称</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AliyunCSDefaultRole</td>
+<td>容器服务(CS)在集群操作时默认使用此角色来访问您在其他云产品中的资源</td>
+</tr>
+<tr>
+<td>AliyunCSManagedVKRole</td>
+<td>容器服务(CS) Serverless集群VK组件使用此角色来访问您在其他云产品中的资源。</td>
+</tr>
+<tr>
+<td>AliyunCSManagedKubernetesRole</td>
+<td>容器服务(CS) Managed Kubernetes版 默认使用此角色来访问您在其他云产品中的资源</td>
+</tr>
+<tr>
+<td>AliyunCSManagedLogRole</td>
+<td>容器服务(CS) Kubernetes 集群日志组件使用此角色来访问您在其他云产品中的资源</td>
+</tr>
+<tr>
+<td>AliyunCSManagedCmsRole</td>
+<td>容器服务(CS) 集群CMS组件使用此角色来访问您在其他云产品中的资源。</td>
+</tr>
+<tr>
+<td>AliyunCSManagedCsiRole</td>
+<td>容器服务(CS) Kubernetes 集群存储插件使用此角色来访问您在其他云产品中的资源</td>
+</tr>
+<tr>
+<td>AliyunCSKubernetesAuditRole</td>
+<td>容器服务(CS) Kubernetes 审计功能使用此角色来访问您在其他云产品中的资源</td>
+</tr>
+<tr>
+<td>AliyunCSManagedNetworkRole</td>
+<td>容器服务(CS) 集群网络组件使用此角色来访问您在其他云产品中的资源。</td>
+</tr>
+<tr>
+<td>AliyunCSManagedArmsRole</td>
+<td>容器服务(CS) Kubernetes 集群Arms插件使用此角色来访问您在其他云产品中的资源。</td>
+</tr>
+<tr>
+<td>AliyunCSServerlessKubernetesRole</td>
+<td>容器服务(CS) Serverless Kubernetes版 默认使用此角色来访问您在其他云产品中的资源</td>
+</tr>
+</tbody>
+</table>
+<p>其次，由于AdsDesk底层调用了大数据能力，因此还需要您提前准备 Access Key 和 Access Secret，为大数据能力的EMR-Spark和EMR-Flink提供授权支持。@杜苏康 补充AKSK分配方法</p>
+<h2 id="3">3、阿里云一键部署具体步骤</h2>
+<table>
+<thead>
+<tr>
+<th>操作步骤</th>
+<th>描述说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>向服务商申请授权</td>
+<td>向服务商申请，为AliUid授权访问和部署。</td>
+</tr>
+<tr>
+<td>为RAM用户的账号</td>
+<td>非主账号使用时，对使用的RAM用户的账号添加相应资源的权限。</td>
+</tr>
+<tr>
+<td>选择套餐版本</td>
+<td>根据预估投放广告的活跃账号数，选配IT资源的套餐版本。</td>
+</tr>
+<tr>
+<td>配置部署参数</td>
+<td>配置部署服务的实例、账户密码和系统参数。</td>
+</tr>
+<tr>
+<td>订单确认</td>
+<td>进入订单确认页面，检查权限依赖、确认服务信息和预览价格，并勾选“我已阅读并同意《计算巢服务协议》”中的复选框。</td>
+</tr>
+</tbody>
+</table>
+<p>选择快捷设定“标准版本”，将默认为您创建能够支撑大约300活跃账号服务集群的RDS、Redis、ACK、Flink、Sprack等实例资源，并自动在ACK的节点池中配置资源10台机型为ecs.g7.xlarge的服务。
+<img alt="图片" src="2.png" /></p>
+<h2 id="4">4、交付物</h2>
+<p>查看服务实例：服务实例创建成功后，部署时间需要大约30分钟。立即创建后，页面上可以看到对应的服务实例，如下图
+<img alt="图片" src="7.png" /></p>
+<h2 id="5">5、客户使用</h2>
+<p>通过浏览器访问AdsDesk登录页
+<img alt="图片" src="12.png" /></p>
+<p>更多功能请参考 <a href="https://www.kancloud.cn/must7bingo/must7bingo/2733398">AdsDesk 操作手册</a></p>
+        
+      </div>
+
+      <div class="copyrights">© 2009-2022 Aliyun.com 版权所有</div>
+    </div>
+  </div>
+  
+  <!--
+  MkDocs version      : 1.5.3
+  Docs Build Date UTC : 2023-12-07 09:52:38.282428+00:00
+  -->
+</body>
+</html>
